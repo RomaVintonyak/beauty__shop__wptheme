@@ -25,38 +25,23 @@
             <div class="footer__catalog--title">
                <h3><?php the_field('blok_katalog', 'option'); ?></h3>
             </div><!--/.title-->
-            <ul class="footer__catalog--menu">
-               <li>
-               <a href="pages/catalog.html">Шампуні</a>
-               </li>
-               <li>
-               <a href="pages/catalog.html">Маски</a>
-               </li>
-               <li>
-               <a href="pages/catalog.html">Кондиціонери</a>
-               </li>
-               <li>
-               <a href="pages/catalog.html">Термозахист</a>
-               </li>
-               <li>
-               <a href="pages/catalog.html">Набори</a>
-               </li>
-               <li>
-               <a href="pages/catalog.html">Трихологія</a>
-               </li>
-               <li>
-               <a href="pages/catalog.html">Ампули</a>
-               </li>
-               <li>
-               <a href="pages/catalog.html">Чоловікам</a>
-               </li>
-               <li>
-               <a href="pages/catalog.html">Гребінці</a>
-               </li>
-               <li>
-               <a href="pages/catalog.html">Косметика</a>
-               </li>
-            </ul><!--/.menu-->
+            <?php
+            $args = array(
+               'taxonomy' => 'product_cat',
+               'hide_empty' => false,
+            );
+            $product_categories = get_terms( $args );
+            $count = count($product_categories);
+            if ( $count > 0 ){
+               echo '<ul class="footer__catalog--menu">';
+               foreach ( $product_categories as $product_category ) {
+                  echo '<li>';
+                  echo '<a href="' . get_term_link( $product_category ) . '">' . $product_category->name . '</a>';
+                  echo '</li>';
+               }
+               echo '</ul>';
+            }
+            ?>
          </div><!--/.footer__catalog-->
          <div class="footer__menu">
             <div class="footer__menu--title">

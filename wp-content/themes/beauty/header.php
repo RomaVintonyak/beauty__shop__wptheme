@@ -120,38 +120,23 @@
       <section class="header__product">
          <div class="container">
          <div class="header__product--row">
-            <ul class="product__menu">
-               <li class="product__menu--item">
-               <a href="pages/catalog.html" class="product__menu--link" data-filter="shampo">Шампуні</a>
-               </li>
-               <li class="product__menu--item">
-               <a href="pages/catalog.html" class="product__menu--link" data-filter="masky">Маски</a>
-               </li>
-               <li class="product__menu--item">
-               <a href="pages/catalog.html" class="product__menu--link" data-filter="kondycionery">Кондиціонери</a>
-               </li>
-               <li class="product__menu--item">
-               <a href="pages/catalog.html" class="product__menu--link" data-filter="termozahyst">Термозахист</a>
-               </li>
-               <li class="product__menu--item">
-               <a href="pages/catalog.html" class="product__menu--link" data-filter="nabory">Набори</a>
-               </li>
-               <li class="product__menu--item">
-               <a href="pages/catalog.html" class="product__menu--link" data-filter="tryhologia">Трихологія</a>
-               </li>
-               <li class="product__menu--item">
-               <a href="pages/catalog.html" class="product__menu--link" data-filter="ampuly">Ампули</a>
-               </li>
-               <li class="product__menu--item">
-               <a href="pages/catalog.html" class="product__menu--link" data-filter="cholovikam">Чоловікам</a>
-               </li>
-               <li class="product__menu--item">
-               <a href="pages/catalog.html" class="product__menu--link" data-filter="grebinci">Гребінці</a>
-               </li>
-               <li class="product__menu--item">
-               <a href="pages/catalog.html" class="product__menu--link" data-filter="kosmetyka">Косметика</a>
-               </li>
-            </ul><!--/.product__menu-->
+            <?php
+            $args = array(
+               'taxonomy' => 'product_cat',
+               'hide_empty' => false,
+            );
+            $product_categories = get_terms( $args );
+            $count = count($product_categories);
+            if ( $count > 0 ){
+               echo '<ul class="product__menu">';
+               foreach ( $product_categories as $product_category ) {
+                  echo '<li class="product__menu--item">';
+                  echo '<a href="' . get_term_link( $product_category ) . '"' . ' class="product__menu--link" data-filter="'. $product_category->slug . '">' . $product_category->name . '</a>';
+                  echo '</li>';
+               }
+               echo '</ul>';
+            }
+            ?>
          </div><!--/.row-->
          </div><!--/.container-->
       </section><!--/.header__product-->

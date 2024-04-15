@@ -21,6 +21,9 @@ function scriptStyle(){
    wp_enqueue_script( 'modal', get_template_directory_uri() . '/assets/js/modal.min.js', null, 1, true);
    wp_enqueue_script( 'reviews', get_template_directory_uri() . '/assets/js/reviews.min.js', null, 1, true);
    wp_enqueue_script( 'basket', get_template_directory_uri() . '/assets/js/basket.min.js', null, 1, true);
+   if(is_page(63)){
+      wp_enqueue_script( 'katalog', get_template_directory_uri() . '/assets/js/catalog.min.js', null, 1, true);
+   }
 
 }
 add_action('wp_enqueue_scripts', 'scriptStyle');

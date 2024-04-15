@@ -193,11 +193,6 @@
                </div><!--/.btn-->
                </div><!--/.product__card-->
 
-
-
-               
-
-
          
             </div><!--/.product__slider-->
          </div><!--/.row-->
